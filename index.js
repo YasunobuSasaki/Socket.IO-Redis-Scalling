@@ -13,17 +13,17 @@ const server = http.createServer((req, res) => {
   var urlData = url.parse(req.url);
 
   // FOR INTERNAL API USE ONLY
-  if (req.method == 'POST' && 
-    urlData.pathname ==  config.get("pubPath")
+  if (req.method == 'POST' &&
+    urlData.pathname == config.get("pubPath")
   ) {
     var body = '';
     req.on('data', function (data) {
       body += data;
     });
     req.on('end', function () {
-     
+
       var param = JSON.parse(body)
-     
+
       if (param.key && param.token == config.get("pubToken")) {
         console.log("PUB------");
         console.log(param.message);
