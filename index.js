@@ -39,7 +39,7 @@ const server = http.createServer((req, res) => {
 
 });
 
-// WS Handling
+// socket.io Handling
 io.adapter(redis({ host: config.get("redis").host, port: config.get("redis").port }));
 io.attach(server);
 isWorker = sticky.listen(server, 3000);
